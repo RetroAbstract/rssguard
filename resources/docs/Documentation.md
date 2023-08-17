@@ -1,8 +1,8 @@
 # 🔥 RSS Guard Documentation 🔥
 
-Welcome to RSS Guard documentation. You can find everything about the application right here.
+Welcome to the RSS Guard documentation. You can find everything to know about the application right here.
 
-There is a [Discord server](https://discord.gg/7xbVMPPNqH) for user communication.
+There is also a [Discord server](https://discord.gg/7xbVMPPNqH) for user communication.
 
 ## Table of Contents
 - [What is RSS Guard?](#wirss)
@@ -44,10 +44,10 @@ RSS Guard is also available in [repositories of many Linux distributions](https:
 - [Regular](https://flathub.org/apps/details/io.github.martinrotter.rssguard): Includes an integrated web browser (built with `-DUSE_WEBENGINE=ON`).
 - [Lite](https://flathub.org/apps/details/io.github.martinrotter.rssguardlite): Does not include an integrated web browser (built with `-DUSE_WEBENGINE=OFF`).
 
-I highly recommend to download RSS Guard only from trusted sources.
+I highly recommend to only download RSS Guard from trusted sources.
 
 ## Supported Operating Systems <a id="sos"></a>
-RSS Guard is a cross-platform application, and at this point it is known to work on:
+RSS Guard is a cross-platform application, and as of right now is known to work on:
 * Windows 10+
 * GNU/Linux with glibc 2.31+ (including PinePhone and other Linux-based phone operating systems)
 * BSD (FreeBSD, OpenBSD, NetBSD, etc.)
@@ -57,7 +57,7 @@ RSS Guard is a cross-platform application, and at this point it is known to work
 ## Major Features <a id="mfe"></a>
 
 ### Supported Feed Readers <a id="sfr"></a>
-RSS Guard is multi-account application and supports many web-based feed readers via [built-in plugins](#papi). One of the plugins, of course, provides the support for standard list of **RSS/ATOM/JSON** feeds with the set of features everyone would expect from classic feed reader, like OPML support, etc.
+RSS Guard is a multi-account application and supports many web-based feed readers via [built-in plugins](#papi). One of the plugins, of course, provides the support for standard lists of **RSS/ATOM/JSON** feeds with the set of features everyone would expect from classic feed reader, like OPML support, etc.
 
 I organized the supported web-based feed readers into an elegant table:
 
@@ -75,9 +75,9 @@ I organized the supported web-based feed readers into an elegant table:
 
 With ISA, RSS Guard only downloads articles which are new or were updated. The old algorithm usually always fetches all available articles, even if they are not needed, which leads to unnecessary overload of your network connection and the RSS Guard.
 
-<sup>2</sup> Note that [labels](#lbls) are supported for all plugins, but for some plugins they are local-only, and are not synchronized with the service. Usually because service itself does not support the feature.
+<sup>2</sup> Note that [labels](#lbls) are supported for all plugins, but for some plugins they are local-only, and are not synchronized with the service. Usually because the service itself does not support the feature.
 
-<sup>3</sup> Tested services are:
+<sup>3</sup> Tested services include:
 * Bazqux
 * Reedah
 * Inoreader
@@ -88,11 +88,11 @@ With ISA, RSS Guard only downloads articles which are new or were updated. The o
 <sup>4</sup> [OAuth](https://en.wikipedia.org/wiki/OAuth) is a secure way of authenticating users in online applications.
 
 ### Article Filtering <a id="fltr"></a>
-Sometimes you need to automatically tweak the incoming article - mark it starred, remove ads from its contents, or simply ignore it. That's where filtering feature comes in.
+Sometimes you need to automatically tweak an incoming article - mark it as starred, remove ads from its contents, or simply ignore it. That's where the filtering feature comes in to play.
 
 <img alt="alt-img" src="images/filters-dialog.png" width="600px">
 
-#### Writing article filter
+#### Writing an article filter
 Article filters are small scripts which are executed automatically when articles/feeds are downloaded. Article filters are JavaScript pieces of code which must provide function with prototype:
 
 ```js
@@ -101,11 +101,11 @@ function filterMessage() { }
 
 The function should be fast and must return values which belong to enumeration [`FilteringAction`](#FilteringAction-enum).
 
-Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard's DB. You can mark article important, change its description, perhaps change author name or even assign some label to it!!!
+Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it's written to RSS Guard's DB. You can mark an article as important, change it's description, perhaps change it's author name or even assign one or multiple labels to it!!!
 
-Almost all changes you make are synchronized back to feed service, if corresponding RSS Guard plugin supports it. <!-- TODO: which does not? -->
+Almost all changes you make are synchronized back to the feed service, if the corresponding RSS Guard plugin supports it. <!-- TODO: which does not? -->
 
-A [special placeholders](#userd-plac) can be used in article filters.
+[Special placeholders](#userd-plac) can be used in article filters.
 
 There is also a special variable named `utils`. This variable is of `FilterUtils` type. It offers some useful [utility functions](#utils-object) for your filters.
 
@@ -117,9 +117,9 @@ Passed article also offers a special function:
 Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 ```
 
-which allows you to perform runtime check for existence of the article in RSS Guard's database. Parameter is the value from enumeration [`DuplicateCheck`](#dupl-check). It specifies how exactly the article should match.
+which allows you to perform runtime checks for the existence of the article in RSS Guard's database. Parameter is the value from enumeration [`DuplicateCheck`](#dupl-check). It specifies how exactly the article should match.
 
-For example, if you want to check if there is already another article by the same author in a database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`.  
+For example, if you want to check if there is already another article by the same author in the database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`.  
 The values of enumeration can be combined in a single call with the **[bitwise OR] (`|`)** operator, like this:
 
   [bitwise OR]: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR>
@@ -128,7 +128,7 @@ The values of enumeration can be combined in a single call with the **[bitwise O
 msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)
 ```
 
-Here is the reference of methods and properties of types available in your filtering scripts.
+Here is the reference table of the methods and properties of the types available in your filtering scripts.
 
 #### `MessageObject` class
 | Type      | Name(Parameters)              | Return value  | Read-only  | Synchronized  | Description
@@ -146,15 +146,15 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `rawContents`                 | `String`      | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON element data. This attribute has the value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored in the RSS Guard's DB. Also, this attribute is artificially filled in with ATOM-like data when testing the filter.
 | Property  | `score`                       | `Number`      | ❌         | ❌            | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
 | Property  | `created`                     | `Date`        | ❌         | ❌            | Date/time of the message.
-| Property  | `isRead`                      | `Boolean`     | ❌         | ✅            | Is message read?
-| Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?
-| Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is message placed in recycle bin?
+| Property  | `isRead`                      | `Boolean`     | ❌         | ✅            | Is the message read?
+| Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is the message important?
+| Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is the message placed in the recycle bin?
 | Method    | `addEnclosure(String url, String mime_type)` | `void` | ❌         | ❌            | Adds multimedia attachment to the article.
-| Method    | `isAlreadyInDatabase(DuplicateCheck criteria)` | `Boolean` | ❌         | ❌            | Allows you to check if message is already stored in the RSS Guard's DB. See [possible parameters](#dupl-check).
+| Method    | `isAlreadyInDatabase(DuplicateCheck criteria)` | `Boolean` | ❌         | ❌            | Allows you to check if the message is already stored in RSS Guard's DB. See [possible parameters](#dupl-check).
 | Method    | `findLabelId(String label_name)`         | `String`     | ❌         | ❌            | If you enter the label name, method returns label's `customId` which then can be used in `assignLabel()` and `deassignLabel` methods.
-| Method    | `assignLabel(String label_id)`         | `Boolean`     | ❌         | ❌            | Assigns label to the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
-| Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
-| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if message filter is applied when message is fetched. Returns `false` if filter is applied manually, for example from **Article filters** window.<!-- TODO: is there another example when it's applied? should "for example" be dropped? -->
+| Method    | `assignLabel(String label_id)`         | `Boolean`     | ❌         | ❌            | Assigns a label to the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes the label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if the message filter is applied when the message is fetched. Returns `false` if the filter is applied manually, for example from **Article filters** window.<!-- TODO: is there another example when it's applied? should "for example" be dropped? -->
 
 #### `Label` class
 | Type      | Name          | Return value  | Read-only | Description
@@ -185,13 +185,13 @@ The `MessageObject` attributes are synchronized with service even if you return 
 #### `utils` object
 | Type      | Name(Parameter)           | Return value  | How to call                               | Description
 | :---      | :---                      | :---          | :---                                      | ---
-| Method    | `hostname()`              | `String`      | `utils.hostname()`                        | Returns name of your PC.
+| Method    | `hostname()`              | `String`      | `utils.hostname()`                        | Returns the name of your PC.
 | Method    | `fromXmlToJson(String xml_string)`   | `String`      | `utils.fromXmlToJson('<h1>hello</h1>')`   | Converts XML string into JSON.
 | Method    | `parseDateTime(String date_time)`   | `Date`        | `utils.parseDateTime('2020-02-24T08:00:00')`  | Converts textual date/time representation into proper `Date` object.
 | Method    | `runExecutableGetOutput(String exec, String[] params)`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output, and returns the output when executable finishes.
 
 #### Examples
-Accept only messages/articles with title containing "Series Name" or "Another series" in it (whitelist):
+Accept only messages/articles with the title containing "Series Name" or "Another series" in it (whitelist):
 ```js
 var whitelist = [
   'Series Name', 'Another series'
@@ -205,7 +205,7 @@ function filterMessage() {
 }
 ```
 
-Accept only messages/articles with title NOT containing "Other Series Name" or "Some other title" in it (blacklist):
+Accept only messages/articles with the title NOT containing "Other Series Name" or "Some other title" in it (blacklist):
 ```js
 var blacklist = [
   'Other Series Name', 'Some other title'
@@ -219,7 +219,7 @@ function filterMessage() {
 }
 ```
 
-Accept only messages/articles from "Bob", while also mark them "important":
+Accept only messages/articles from "Bob", while also marking them "important":
 ```js
 function filterMessage() {
   if (msg.author == "Bob") {
@@ -240,7 +240,7 @@ function filterMessage() {
 }
 ```
 
-Use published element instead of updated element (for ATOM entries only):
+Use the published element instead of the updated element (for ATOM entries only):
 ```js
 function filterMessage() {
   // Read raw contents of message and
@@ -320,7 +320,7 @@ function filterMessage() {
 }
 ```
 
-Make sure that you receive only one message with particular URL across all your feeds, plugin/account-wise. All other messages with the same URL are subsequently ignored:
+Make sure that you receive only one message with a particular URL across all your feeds, plugin/account-wise. All other messages with the same URL are subsequently ignored:
 ```js
 function filterMessage() {
   if (msg.isAlreadyInDatabase(MessageObject.SameUrl | MessageObject.AllFeedsSameAccount)) {
@@ -346,11 +346,11 @@ function filterMessage() {
 
 RSS Guard offers additional advanced features inspired by [Liferea](https://lzone.de/liferea/).
 
-You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
+You can select the source type of each feed. If you select `URL`, then RSS Guard simply downloads the feed file from the given location and behaves like everyone would expect.
 
-However, if you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)]. Data written to standard output should be valid feed file, for example RSS or ATOM XML file.
+However, if you choose `Script` option, then you cannot provide the URL of your feed, and you rely on a custom script to generate the feed file and provide its contents to [**standard output** (stdout)]. Data written to standard output should be a valid feed file, for example an RSS or ATOM XML file.
 
-`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be discovered :sparkles: automagically :sparkles:.
+The `Fetch it now` button also works with the `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like the title or the icon of the feed, can be discovered :sparkles: automagically :sparkles:.
 
 <img alt="alt-img" src="images/scrape-source-type.png" width="350px">
 
@@ -359,11 +359,11 @@ Any errors in your script must be written to [**error output** (stderr)].
    [**standard output** (stdout)]: <https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)>
    [**error output** (stderr)]: <https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)>
 
-> **As of RSS Guard 4.2.0, you cannot separate your arguments with `#`. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.**
+> **As of RSS Guard 4.2.0, you cannot separate your arguments with `#` anymore. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.**
 
-If everything goes well, script must return `0` as the process exit code, or a non-zero exit code if some error happened.
+If everything goes well, script must return `0` as the process exit code, or a non-zero exit code if some error occured.
 
-Executable file must be always be specified, while arguments not. Be very careful when quoting arguments. Tested examples of valid execution lines are:
+Executable files must always be specified, while arguments do not. Be very careful when quoting arguments. Tested examples of valid execution lines are:
 
 | Command       | Explanation   |
 | :---          | ---           |
@@ -373,27 +373,27 @@ Executable file must be always be specified, while arguments not. Be very carefu
 
 Note that the above examples are cross-platform. You can use exactly the same command on Windows, Linux or macOS, if your operating system is properly configured.
 
-RSS Guard offers [placeholder](#userd-plac) `%data%` which is automatically replaced with full path to RSS Guard [user's data folder](#userd), allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](#userd-plac) `%data%` which is automatically replaced with the full path to RSS Guard [user's data folder](#userd), allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
 
-Also, working directory of process executing the script is set to point to RSS Guard user's data folder.
+Also, the working directory of script process executing is set to point to RSS Guard user's data folder.
 
-There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python script.py`. Make sure to examine each script for more information on how to use it.
+There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python script.py`. Make sure to examine each script for more information on how to use them.
 
-After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to [**standard output** (stdout)] while printing all error messages to [**error output** (stderr)].
+After your source feed data is downloaded either via URL or a custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to [**standard output** (stdout)] while printing all error messages to [**error output** (stderr)].
 
-Format of post-process script execution line is the same as above.
+The format of post-process script execution line is the same as above.
 
 <img alt="alt-img" src="images/scrape-post.png" width="350px">
 
-Typical post-processing filter might do things like CSS formatting, localization of content to another language, downloading of complete articles, some kind of filtering, or removing ads.
+A typical post-processing filter might do things like CSS formatting, localization of content to another language, downloading of complete articles, some kind of filtering, or removing ads.
 
-It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
+It's completely up to you if you decide to only use the script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
 
-Third-party tools for scraping made to work with RSS Guard:
+Third-party tools for scraping made to work with RSS Guard are also available:
 * [CSS2RSS](https://github.com/Owyn/CSS2RSS) - can be used to scrape websites with CSS selectors.
 * [RSSGuardHelper](https://github.com/pipiscrew/RSSGuardHelper) - another CSS selectors helper.
 
-Make sure to give credit to authors that they deserve.
+Make sure to give the authors the credit they deserve.
 
 ### Notifications <a id="notif"></a>
 RSS Guard allows you to customize desktop notifications. There are a number of events which can be configured:
@@ -405,49 +405,49 @@ RSS Guard allows you to customize desktop notifications. There are a number of e
 
 <img alt="alt-img" src="images/notif.png" width="600px">
 
-Your notification can also play `.wav` sounds which you can place under your [user's data folder](#userd) and use them via [special placeholder](#userd-plac). Other audio formats are not supported.
+Your notifications can also play `.wav` sounds which you can place in your [user data folder](#userd) and use via a [special placeholder](#userd-plac). Other audio formats are not supported.
 
 ### Database Backends <a id="datab"></a>
-RSS Guard offers switchable database backends to hold your data. At this point, two backends are available:
+RSS Guard offers switchable database backends to hold your data. As of now, two backends are available:
 * MariaDB
 * SQLite (default)
 
-SQLite backend is very simple to use, no further configuration needed. All your data is stored in a single file:
+SQLite backend is very simple to use, no further configuration is needed. All your data is stored in a single file:
 ```
 <user-data-root-folder>\database\local\database.db
 ```
-(For path to user's data folder, see [User Data Portability](#userd) section.)  
-This backend offers an "in-memory" database option, which automatically copies all your data into RAM when application launches, and stores it there, making RSS Guard incredibly fast. Data is written back to database file on disk when application exits. This option is not expected to be used often because RSS Guard should be fast enough with classic SQLite persistent DB files. Use this option only with huge amount of article data, and when you know what you are doing.
+(For the path to user's data folder, see [User Data Portability](#userd) section.)  
+This backend offers an "in-memory" database option, which automatically copies all your data into RAM when the application launches, and stores it there, making RSS Guard incredibly fast. Data is written back to database file on disk when application exits. This option is not expected to be used often because RSS Guard should be fast enough with classic SQLite persistent DB files. Use this option only with a huge amount of article data, and when you know what you are doing.
 
 MariaDB (MySQL) backend is there for users who want to store their data in a centralized way. You can have a single server in your network and use multiple RSS Guard instances to access the data.
 
-For database-related configuration see **Settings -> Data storage** dialog section.
+For database-related configuration see the **Settings -> Data storage** dialog section.
 
 ### User Data Portability <a id="userd"></a>
 One of the main goals of RSS Guard is to have portable user data (relocatable), so that it can be used across all [supported operating systems](#sos).
 
 RSS Guard can run in two modes:
 
-* **Non-portable:** The default mode, where user's data folder is placed in user-wide "config directory" (`C:\Users\<user>\AppData\Local` on Windows).  
+* **Non-portable:** The default mode, where the user's data folder is placed in a user-wide "config directory" (`C:\Users\<user>\AppData\Local` on Windows).  
   If the file `C:\Users\<user>\AppData\Local\RSS Guard 4\data\config\config.ini` exists, then this `<user>`'s folder is used.  
-  Check **Help -> About application -> Resources** dialog tab to find more info on paths used.
+  Check the **Help -> About application -> Resources** dialog tab to find out more info on paths used.
 
-* **Portable mode:** This mode allows storing user's data folder in a subfolder **data4** in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This mode is used automatically if non-portable mode detection fails.
+* **Portable mode:** This mode allows storing the user's data folder in a subfolder called **data4** in the same directory as RSS Guard's binary (`rssguard.exe` on Windows). This mode is used automatically if non-portable mode detection fails.
 
-User's data folder can store your custom icon themes in **icons** subfolder, and custom skins in **skins** subfolder.
+The user's data folder can store your custom icon themes in the **icons** subfolder, and custom skins in the **skins** subfolder.
 
 #### `%data%` placeholder <a id="userd-plac"></a>
-RSS Guard stores its data and settings in a single folder. How to find out the exact path, see [here](#userd). RSS Guard allows using the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in following contexts:
-* Contents of your [article filters](#fltr) - you can, therefore, place some scripts under your user's data folder and include them via JavaScript into your article filter.
-* Contents of each file included in your custom [skins](#skin). Note that in this case, the semantics of `%data%` are little changed and `%data%` points directly to base folder of your skin.
-* `source` and `post-process script` attributes for feed's [scraping](#scrap) - you can use the placeholder to load scripts to generate/process the feed from user's data folder.
-* Notifications also support the placeholder in path to audio files which are to be played when some event happens. For example, you could place audio files in your data folder and then use them in a notification with `%data%\audio\new-messages.wav`. See more about [notifications](#notif).
+RSS Guard stores it's data and settings in a single folder. To find out the exact path, see [here](#userd). RSS Guard allows using the folder programmatically in some special contexts via the `%data%` placeholder. You can use this placeholder in the following contexts:
+* Contents of your [article filters](#fltr) - you can, therefore, place some scripts in your user data folder and include them via JavaScript into your article filter.
+* Contents of each file included in your custom [skins](#skin). Note that in this case, the semantics of `%data%` are a little changed and `%data%` points directly to the base folder of your skin.
+* `source` and `post-process script` attributes for feed [scraping](#scrap) - you can use the placeholder to load scripts to generate/process the feed from the user's data folder.
+* Notifications also support the placeholder in path to audio files which are to be played when an event happens. For example, you could place audio files in your data folder and then use them in a notification with `%data%\audio\new-messages.wav`. Learn more about [notifications](#notif).
 
 ### Built-in Web Browser with AdBlock <a id="webb"></a>
 RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled article viewer**: This variant displays messages/articles with their full formatting and layout in embedded Chromium-based web browser. This variant of RSS Guard should be nice for everyone. Also, installation packages are relatively big.
+* **Standard package with a WebEngine-based bundled article viewer**: This variant displays messages/articles with their full formatting and layout in an embedded Chromium-based web browser. This variant of RSS Guard should be fine for everyone. Note that the installation packages are relatively big.
 
-* **Lite package with simple text-based article viewer**: This variant displays article in a much simpler and much more lightweight web viewer component. All packages of this variant have `nowebengine` keyword in their names. This flavor of RSS Guard does NOT have a JavaScript support and is meant for people who value their privacy.
+* **Lite package with a simple text-based article viewer**: This variant displays article in a much simpler and much more lightweight web viewer component. All packages of this variant have `nowebengine` as keyword in their names. This flavor of RSS Guard does NOT have JavaScript support and is meant for people who value their privacy.
 
 #### AdBlock <a id="adbl"></a>
 Both variants of RSS Guard offer ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
@@ -458,12 +458,12 @@ You can find elaborate lists of AdBlock rules [here](https://easylist.to). You c
 
 <img alt="alt-img" src="images/adblock.png" width="350px">
 
-The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
+The way ad-blocking internally works is that RSS Guard starts a local HTTP browser which provides an ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
 
 ## Minor Features <a id="mife"></a>
 
-### Files Downloader <a id="downl"></a>
-RSS Guard offers simple embedded file downloader.
+### File Downloader <a id="downl"></a>
+RSS Guard offers a simple embedded file downloader.
 
 <img alt="alt-img" src="images/downloader-window.png" width="600px">
 
@@ -474,17 +474,17 @@ You can right-click any item in an embedded web browser and hit the **Save as** 
 You can download up to 6 files simultaneously.
 
 ### Node.js <a id="node"></a>
-RSS Guard has the [Node.js](https://nodejs.org) integration. For more information see **Node.js** section of RSS Guard **Settings** dialog.
+RSS Guard has [Node.js](https://nodejs.org) integration. For more information see the **Node.js** section of RSS Guard's **Settings** menu.
 
-Node.js is used for some advanced functionality like [AdBlock](#adbl).
+Node.js is used for advanced functionalities like [AdBlock](#adbl).
 
 
 ### Labels <a id="lbls"></a>
 RSS Guard supports labels (tags). Any number of tags can be assigned to any article.
 
-Note that tags in some plugins are [synchronizable](#sfrl). While labels are synchronized with these services, sometimes they cannot be directly created via RSS Guard. In this case, you have to create them via web interface of the respective service, and only after that perform **Synchronize folders & other items**, which will fetch newly created labels too.
+Note that tags in some plugins are [synchronizable](#sfrl). While labels are synchronized with these services, sometimes they cannot be directly created via RSS Guard. In this case, you have to first create them via the web interface of the respective service, then after having done that, perform **Synchronize folders & other items**, which will then fetch the newly created labels.
 
-New labels can be added via right-click menu of the **Labels** item in a feed list.
+New labels can be added via the right-click menu of the **Labels** item in a feed list.
 
 <img alt="alt-img" src="images/label-menu.png" width="600px">
 
