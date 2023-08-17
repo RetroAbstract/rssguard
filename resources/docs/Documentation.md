@@ -496,23 +496,23 @@ Unassigning a message label might easily be done through the message viewer.
 
 <img alt="alt-img" src="images/label-assign.png" width="600px">
 
-Note that unassigning the message labels is also synchronized at regular intervals (with services that support label synch).
+Note that unassigning message labels is also synchronized at regular intervals (with services that support label sync).
 
 [Message filters](#fltr) can assign or remove labels from messages.
 
 ### Skins <a id="skin"></a>
-RSS Guard is a skinable application. With [Qt stylesheets](https://doc.qt.io/qt-5/stylesheet.html), the GUI can be changed almost entirely.
+RSS Guard is a skinable application. With [Qt stylesheets](https://doc.qt.io/qt-5/stylesheet.html), the GUI can almost be entirely changed.
 
 <img alt="alt-img" src="images/gui-dark.png" width="600px">
 
-> Note that as of RSS Guard `4.1.3`, old skins **vergilius** and **dark** were removed and replaced with **nudus** skins. For now, only **nudus** skins are maintained by RSS Guard developers.  
+> Note that as of RSS Guard `4.1.3`, old skins **vergilius** and **dark** were removed and replaced with **nudus** skins. As of now, only **nudus** skins are maintained by the RSS Guard developers.  
 > The skin "API" (see below) is very extensive and allows tweaking the visual part of RSS Guard in many ways without much work.
 
-You can select style and skin in **Settings -> User interface** dialog section.
+You can select a style and skin in the **Settings -> User interface** menu section of RSS Guard.
 
-Try to play around with various combinations of styles and skins to achieve the UI you like.
+Try to play around with various combinations of styles and skins to achieve the UI you want.
 
-Creating a custom UI is possible with *skins*. Each skin should be placed in its own root folder and must contain specific files (see the ["plain" example skin]). The [built-in skins](https://github.com/martinrotter/rssguard/tree/master/resources/skins) are stored in folder together with RSS Guard executable, but you can place your own custom skins in a **skins** subfolder in [user's data folder](#userd). Create the folder manually, if it does not exist.
+Creating a custom UI is possible with *skins*. Each skin should be placed in its own root folder and must contain specific files (see the ["plain" example skin]). The [built-in skins](https://github.com/martinrotter/rssguard/tree/master/resources/skins) are stored in a folder together with the RSS Guard executable, but you can place your own custom skins in a **skins** subfolder in [user's data folder](#userd). Create the folder manually, if it does not exist.
 
    ["plain" example skin]: <https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain>
 
@@ -526,17 +526,17 @@ For example, if your new skin is called **greenland**, the folder path should be
 
 As stated above, there are specific files that each skin folder must contain:
 * `metadata.xml` - XML file with basic information about the skin's name, author etc.
-* `qt_style.qss` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file
-* `html_*.html`  - HTML files which are put together to create a complete HTML pages for various things, like newspaper view, article viewer, or error page
+* `qt_style.qss` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file.
+* `html_*.html`  - HTML files which are put together to create a complete HTML page for various things, like newspaper view, article viewer, or error page.
 
 The ["plain" example skin] can be used as a reference for writing your own skins. Go through its [README file](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain/README) to find more detailed information.
 
 Note that not all skins have to provide a full-blown theming for every UI component of RSS Guard. Skin can provide just a custom HTML/CSS setup for article viewer and a minimal Qt CSS styling for UI controls.
 
-To avoid confusion, the option **Force dark look** becomes available only when **Fusion** (or Linux-only **Windows**) style is used. This option is completely independent from Qt stylesheet defined in skin's `qt_style.qss` file. <!-- TODO: it was removed, right? -->
+To avoid confusion, the option **Force dark look** becomes available only when **Fusion** (or Linux-only **Windows**) style is used. This option is completely independent from the Qt stylesheet defined in skin's `qt_style.qss` file. <!-- TODO: it was removed, right? -->
 
 ### GUI Tweaking <a id="guit"></a>
-Appearance of the main window can be tweaked in many ways. You can hide menu, toolbars, status bar, you can also change orientation of article viewer to suit widescreen devices.
+Appearance of the main window can be tweaked in many ways. You can hide the menu, toolbars, status bar, you can also change the orientation of the article viewer to suit widescreen devices.
 
 <img alt="alt-img" src="images/gui-hiding.png" width="600px">
 <img alt="alt-img" src="images/gui-hiding-all.png" width="600px">
@@ -545,7 +545,7 @@ Appearance of the main window can be tweaked in many ways. You can hide menu, to
 <img alt="alt-img" src="images/gui-dark2.png" width="600px">
 
 ### Command Line Interface <a id="cli"></a>
-RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
+RSS Guard offers CLI (command line interface). For an overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
 
 ```
 Usage: rssguard [options] [url-1 ... url-n]
@@ -582,12 +582,12 @@ rssguard.exe "feed:https//archlinux.org/feeds/news"
 rssguard.exe "https://archlinux.org/feeds/news"
 ```
 
-In order to easily add the feed directly from your web browser of choice, without copying and pasting the URL manually, you have to "open" RSS Guard "with" feed URL passed as an argument. There are [browser extensions](https://addons.mozilla.org/en-US/firefox/addon/open-with/) which will allow you to do it.
+In order to easily add the feed directly from your web browser of choice, without copying and pasting the URL manually, you have to "open" RSS Guard "with" the feed URL passed as an argument. There are [browser extensions](https://addons.mozilla.org/en-US/firefox/addon/open-with/) that allow you to do this.
 
 ## For Contributors <a id="contrib"></a>
 
 ### Donations <a id="donat"></a>
-You can support author of RSS Guard via [donations](https://github.com/sponsors/martinrotter).
+You can support the creator of RSS Guard via [GitHub](https://github.com/sponsors/martinrotter), [PayPal](https://www.paypal.me/martinrot), [Patreon](patreon.com/martinrotter) and [LiberaPay](https://liberapay.com/martinrotter).
 
 ### Compiling RSS Guard <a id="compil"></a>
 RSS Guard is a C++ application. All common build instructions can be found at the top of [CMakeLists.txt](https://github.com/martinrotter/rssguard/blob/master/CMakeLists.txt).
@@ -612,37 +612,37 @@ sudo make -C build-dir install
 ```
 
 ### <a id="papi"></a>Plugin API
-A simple C++ API allows creating new service plugins. All base <!-- TODO: should it be "basic"?--> API classes can be found in the [**abstract** folder](https://github.com/martinrotter/rssguard/tree/master/src/librssguard/services/abstract). User must create a <!-- TODO: "create" right? --> subclass and implement all interface classes:
+A simple C++ API that allows creating new service plugins. All base <!-- TODO: should it be "basic"?--> API classes can be found in the [**abstract** folder](https://github.com/martinrotter/rssguard/tree/master/src/librssguard/services/abstract). User must create a <!-- TODO: "create" right? --> subclass and implement all interface classes:
 
 | Class                 | Purpose   |
 | :---                  | ---       |
-| `ServiceEntryPoint`   | The base <!-- TODO: Here's "basic" too? or is it the `base` class? --> class which provides basic information about the plugin name, author, etc. It also provides methods which are called when new account is created or when existing accounts are loaded from database. |
-| `ServiceRoot`         | This is the core "account" class which represents an account node in feed's list, and offers interface for all critical functionality of a plugin, including handlers which are called with plugin's start/stop, marking messages as read/unread/starred/deleted, unassigning labels, etc. |
+| `ServiceEntryPoint`   | The base <!-- TODO: Here's "basic" too? or is it the `base` class? --> class which provides basic information about the plugin's name, author, etc. It also provides methods which are called when a new account is created or when existing accounts are loaded from database. |
+| `ServiceRoot`         | This is the core "account" class which represents an account node in the feed's list, and offers an interface for all critical functionality of a plugin, including handlers which are called with plugin's start/stop, marking messages as read/unread/starred/deleted, unassigning labels, etc. |
 
-API is reasonably simple to understand but relatively extensive. Sane defaults are used where it makes sense.
+The API is reasonably simple to understand but relatively extensive. Sane defaults are used where it makes sense.
 
 Perhaps the best approach to writing a new plugin is to copy the [existing one](https://github.com/martinrotter/rssguard/tree/master/src/librssguard/services/greader), and start from there.
 
-Note that RSS Guard can support loading of plugins from external libraries (`.dll`, `.so`, etc.) but the functionality must be polished. At the moment, all plugins are directly bundled with the application, as no one really requested a run-time loading of plugins so far.
+Note that RSS Guard can support loading of plugins from external libraries (`.dll`, `.so`, etc.) but the functionality must be polished. As of now, all plugins are directly bundled with the application, as no one has really requested a run-time loading of plugins so far.
 
 ### <a id="reprt"></a>Reporting Bugs or Feature Requests
-Please report all issues/bugs/requests to [Issues page](https://github.com/martinrotter/rssguard/issues). Describe the problem you are having, and include steps taken to cause the issue to occur.
+Please report all issues/bugs/requests to the [Issues page](https://github.com/martinrotter/rssguard/issues). Describe the problem you are having, and include steps taken to cause the issue to occur.
 
 If you report a bug, you must provide the application debug log. Make sure to start RSS Guard from command line (`cmd.exe` on Windows) with `--log` switch and the path where you want to store the log file. For example, with this command: `rssguard.exe --log '.\rssguard.log'` the log file will be saved in a folder with RSS Guard's executable (`rssguard.exe`).
 
 After starting RSS Guard this way, reproduce your issue and attach the log file to your ticket.
 
-> Application log can also be displayed directly in RSS Guard (the **Help > Display application log** menu item).  
-> Note that the log messages are pumped into dialog window only when it is opened (the window can be minimized).
+> The application log can also be displayed directly in RSS Guard (**Help > Display application log** menu item).  
+> Note that the log messages are pumped into the dialog window only when it is opened (the window can be minimized).
 
 For broader questions and general ideas, use the [Discussions page](https://github.com/martinrotter/rssguard/discussions).
 
 ### Localization <a id="locali"></a>
 RSS Guard supports localization to [many languages](https://crowdin.com/project/rssguard).
 
-If you are interested in translating RSS Guard, then go to [RSS Guard page on Crowdin](https://crowdin.com/project/rssguard) and check status of currently supported localizations.
+If you are interested in translating RSS Guard, then go to the [RSS Guard page on Crowdin](https://crowdin.com/project/rssguard) and check the status of currently supported localizations.
 
-**All translators commit themselves to keep their translations up-to-date. If translation is not updated by the author regularly, and only a small number of strings is translated, then those translations along with their teams will eventually be REMOVED from the project!!! At least 50% of strings must be translated for translation to be added to project.**
+**All translators commit themselves to keeping their translations up-to-date. If a translation is not regularly updated by the author, and only a small number of strings are translated, then those translations along with their teams will eventually be REMOVED from the project!!! At least 50% of strings must be translated for a translation to be added to the project.**
 
 ### Migrating data <a id="migratt"></a>
 RSS Guard automatically migrates all your [user data](#userd) if you upgrade to a newer minor version, for example if you update from `3.7.5` to `3.9.1`.
@@ -654,13 +654,13 @@ If you decide to upgrade to a new major version, for example from `3.x.x` to `4.
 >
 > Make sure that last RSS Guard `3.x.x` version you used with your data was the latest `3.9.2`.
 
-Here is a short DIY manual on how to manually update your `database.db` file to `4.x.x` format. Similar approach can be taken if you use **MariaDB** [database backend](#datab).
+Here is a short DIY manual on how to manually update your `database.db` file to `4.x.x` format. A similar approach can be taken if you use **MariaDB** [database backend](#datab).
 
 Here are SQLs for [old schema](https://github.com/martinrotter/rssguard/blob/3.9.2/resources/sql/db_init_sqlite.sql) and [new schema](https://github.com/martinrotter/rssguard/blob/4.0.0/resources/sql/db_init_sqlite.sql).
 
 ### Converting `*Accounts` tables
 ***
-In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have one of these values:
+In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one `Accounts` table and place account-specific data into the `custom_data` column. You can simply take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns at their default values - except `type`, which must have one of the following values:
 * `std-rss` - For standard list of RSS/ATOM feeds
 * `tt-rss` - For Tiny Tiny RSS
 * `owncloud` - For Nextcloud News
@@ -668,9 +668,9 @@ In `3.x.x` each plugin/account type had its own table where it kept your login u
 * `feedly` - For Feedly
 * `gmail` - For Gmail
 
-Then you need to go to **Edit** dialog of your account in RSS Guard (once you complete this migration guide) and check for all missing login information etc.
+Then you need to go to the **Edit** dialog of your account in RSS Guard (once you complete this migration guide) and check for all missing login information etc.
 
-<a id="accid"></a>Once you add the row to the `Accounts` table, it will be assigned a unique integer `id` value, which is used as a foreign key in other DB tables via `account_id` column.
+<a id="accid"></a>Once you add the row to the `Accounts` table, it will be assigned a unique integer `id` value, which is used as a foreign key in other DB tables via the `account_id` column.
 
 ### Converting `Feeds` table
 ***
@@ -693,9 +693,9 @@ Pay attention to `account_id` column as this column is the ID of your account as
 
 ### Converting `Messages` table
 ***
-Columns were reordered and other than that new column `score` with sane default value was added. Therefore, you can simply copy your data in a column-to-column mode.
+Columns were reordered and other than that, the new column `score` with a sane default value was added. Therefore, you can simply copy your data in a column-to-column mode.
 
-Pay attention to `account_id` column as this column is the ID of your account as stated in the above [section](#accid).
+Pay attention to the `account_id` column as this column is the ID of your account as stated in the above [section](#accid).
 
 ### Other tables
 ***
